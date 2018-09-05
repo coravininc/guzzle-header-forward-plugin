@@ -1,7 +1,7 @@
 {
-    "name": "sbutnariu/guzzle-bundle-header-forward-plugin",
+    "name": "sbutnariu/guzzle-header-forward-plugin",
     "type": "library",
-    "description": "Guzzle plugin that allow you to forward headers from your current request into the the guzzle one automatically.",
+    "description": "Guzzle plugin that allow you to forward headers from your current request into the the guzzle one automatically. Fork from neirda24/guzzle-bundle-header-forward-plugin adapted to work with Symfony 4.*",
     "keywords": [
         "middleware",
         "plugin",
@@ -16,7 +16,6 @@
         "header",
         "forward"
     ],
-    "homepage": "https://github.com/Neirda24/GuzzleBundleHeaderForwardPlugin",
     "license": "MIT",
     "authors": [
         {
@@ -27,10 +26,6 @@
         {
             "name": "Silviu Butnariu",
             "email": "silviubutnariu@yahoo.com"
-        },
-        {
-            "name": "Community",
-            "homepage": "https://github.com/Neirda24/GuzzleBundleHeaderForwardPlugin/contributors"
         }
     ],
     "require": {
@@ -47,7 +42,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SilviuButnariu\\Bundle\\GuzzleBundleHeaderForwardPlugin\\": "src"
+            "SilviuButnariu\\GuzzleHeaderForwardPlugin\\": "src"
         }
     }
 }

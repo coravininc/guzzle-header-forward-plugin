@@ -1,10 +1,11 @@
-# Guzzle Bundle Header Forwarding Plugin
+# Guzzle Header Forwarding Plugin
 
 This plugin integrates a way to forward headers from the current symfony request into the cURL.
 
 
 ## Requirements
  - PHP 7.0 or above
+ - Symfony 4.0 or above
  - [Guzzle Bundle][1]
 
  
@@ -15,24 +16,40 @@ Using [composer][2]:
 ``` json
 {
     "require": {
-        "neirda24/guzzle-bundle-header-forward-plugin": "^1.0"
+        "sbutnariu/guzzle-header-forward-plugin": "^1.0"
     }
 }
 ```
 
 ##### command line
 ``` bash
-$ composer require neirda24/guzzle-bundle-header-forward-plugin
+$ composer require sbutnariu/guzzle-header-forward-plugin
 ```
 
 ## Usage
 ### Enable bundle
+In ```bin/Kernel.php``` find the lines that registers bundles:
 ``` php
-# app/AppKernel.php
-
-new EightPoints\Bundle\GuzzleBundle\EightPointsGuzzleBundle([
-    new Neirda24\Bundle\GuzzleBundleHeaderForwardPlugin\GuzzleBundleHeaderForwardPlugin(),
-])
+# bin/Kernel.php
+foreach ($contents as $class => $envs) {
+    if (isset($envs['all']) || isset($envs[$this->environment])) {
+        yield new $class();
+    }
+}
+```
+and replace them with:
+``` php
+foreach ($contents as $class => $envs) {
+    if (isset($envs['all']) || isset($envs[$this->environment])) {
+        if ($class === \EightPoints\Bundle\GuzzleBundle\EightPointsGuzzleBundle::class) {
+            yield new $class([
+                new SilviuButnariu\GuzzleHeaderForwardPlugin\Plugin(),
+            ]);
+        } else {
+            yield new $class();
+        }
+    }
+}
 ```
 
 ### Basic configuration
