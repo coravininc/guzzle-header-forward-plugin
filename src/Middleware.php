@@ -1,12 +1,12 @@
 <?php
 
-namespace SilviuButnariu\Bundle\GuzzleBundleHeaderForwardPlugin;
+namespace SilviuButnariu\GuzzleHeaderForwardPlugin;
 
 use GuzzleHttp\Client;
 use Psr\Http\Message\RequestInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class GuzzleForwardHeaderMiddleware
+class Middleware
 {
     /**
      * @var RequestStack
@@ -19,7 +19,7 @@ class GuzzleForwardHeaderMiddleware
     private $headers;
 
     /**
-     * GuzzleForwardHeaderMiddleware constructor.
+     * Middleware constructor.
      *
      * @param RequestStack $requestStack
      * @param string[]     $headers

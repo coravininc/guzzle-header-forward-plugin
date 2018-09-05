@@ -1,6 +1,6 @@
 <?php
 
-namespace SilviuButnariu\Bundle\GuzzleBundleHeaderForwardPlugin;
+namespace SilviuButnariu\GuzzleHeaderForwardPlugin;
 
 use EightPoints\Bundle\GuzzleBundle\EightPointsGuzzleBundlePlugin;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -10,7 +10,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\ExpressionLanguage\Expression;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class GuzzleBundleHeaderForwardPlugin extends Bundle implements EightPointsGuzzleBundlePlugin
+class Plugin extends Bundle implements EightPointsGuzzleBundlePlugin
 {
     /**
      * {@inheritdoc}
@@ -50,8 +50,8 @@ class GuzzleBundleHeaderForwardPlugin extends Bundle implements EightPointsGuzzl
     public function loadForClient(array $config, ContainerBuilder $container, string $clientName, Definition $handler)
     {
         if (true === $config['enabled'] && !empty($config['headers'])) {
-            $forwardHeaderMiddlewareDefinitionName = sprintf('guzzle_bundle_header_forward_plugin.middleware.%s', $clientName);
-            $forwardHeaderMiddlewareDefinition     = new Definition(GuzzleForwardHeaderMiddleware::class);
+            $forwardHeaderMiddlewareDefinitionName = sprintf('guzzle_header_forward_plugin.middleware.%s', $clientName);
+            $forwardHeaderMiddlewareDefinition     = new Definition(Middleware::class);
             $forwardHeaderMiddlewareDefinition->setArguments([
                 new Reference('request_stack'),
                 $config['headers']
