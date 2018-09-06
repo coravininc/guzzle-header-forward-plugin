@@ -14,7 +14,7 @@ class Middleware
     private $requestStack;
 
     /**
-     * @var string[]
+     * @var array
      */
     private $headers;
 
@@ -22,12 +22,12 @@ class Middleware
      * Middleware constructor.
      *
      * @param RequestStack $requestStack
-     * @param string[]     $headers
+     * @param array $headers
      */
     public function __construct(RequestStack $requestStack, array $headers = [])
     {
         $this->requestStack = $requestStack;
-        $this->headers      = $headers;
+        $this->headers = $headers;
     }
 
     /**
@@ -45,8 +45,10 @@ class Middleware
             $currentRequest = $this->requestStack->getCurrentRequest();
 
             foreach ($this->headers as $header) {
-                if ($currentRequest->headers->has($header)) {
-                    $request = $request->withHeader($header, $currentRequest->headers->get($header));
+                if ($currentRequest->headers->has($header['name'])) {// if header is specifically given, forward it
+                    $request = $request->withHeader($header['name'], $currentRequest->headers->get($header['name']));
+                } elseif (array_key_exists('default', $header)) {// forward the defined default value
+                    $request = $request->withHeader($header['name'], $header['default']);
                 }
             }
 

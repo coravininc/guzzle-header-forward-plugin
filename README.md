@@ -1,7 +1,7 @@
 # Guzzle Header Forwarding Plugin
 
 This plugin integrates a way to forward headers from the current symfony request into the cURL.
-
+You can optionally specify a default value for a header to be sent even if in the master request this header is not set.
 
 ## Requirements
  - PHP 7.0 or above
@@ -68,8 +68,10 @@ eight_points_guzzle:
                 header_forward:
                     enabled: true
                     headers:
-                        - 'Accept-Language'
+                        - {name: Accept-Language, default: en-US}
 ```
+- name = header name
+- default = optional default value to be sent on sub requests even if the header is not defined in the master request
 
 [1]: https://github.com/8p/EightPointsGuzzleBundle
 [2]: https://getcomposer.org/
