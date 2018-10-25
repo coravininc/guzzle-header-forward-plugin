@@ -1,6 +1,6 @@
 <?php
 
-namespace SilviuButnariu\GuzzleHeaderForwardPlugin;
+namespace Coravin\GuzzleHeaderForwardPlugin;
 
 use GuzzleHttp\Client;
 use Psr\Http\Message\RequestInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace SilviuButnariu\GuzzleHeaderForwardPlugin;
+namespace Coravin\GuzzleHeaderForwardPlugin;
 
 use EightPoints\Bundle\GuzzleBundle\EightPointsGuzzleBundlePlugin;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

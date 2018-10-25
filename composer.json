@@ -1,5 +1,5 @@
 {
-    "name": "sbutnariu/guzzle-header-forward-plugin",
+    "name": "coravininc/guzzle-header-forward-plugin",
     "type": "library",
     "description": "Guzzle plugin that allow you to forward headers from your current request into the the guzzle one automatically. Fork from neirda24/guzzle-bundle-header-forward-plugin adapted to work with Symfony 4.*",
     "keywords": [
@@ -42,7 +42,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SilviuButnariu\\GuzzleHeaderForwardPlugin\\": "src"
+            "Coravin\\GuzzleHeaderForwardPlugin\\": "src"
         }
     }
 }
